@@ -5,6 +5,10 @@ import cc.ricecx.logsnag4j.exceptions.LogSnagException;
 import cc.ricecx.logsnag4j.http.LogSnagHTTPClient;
 import cc.ricecx.logsnag4j.http.DefaultLogSnagHttpClient;
 
+/**
+ * A class that represents the LogSnag API exposed
+ * as a client.
+ */
 public class LogSnagClient implements LogSnag {
 
     /**
@@ -43,16 +47,34 @@ public class LogSnagClient implements LogSnag {
     }
 
 
+    /**
+     * Gets the current project name
+     * @return the current project name
+     */
     public String getProject() {
         return project;
     }
+
+    /**
+     * Sets the current project name
+     * @param project The project name
+     */
     public void setProject(String project) {
         this.project = project;
     }
 
+    /**
+     * Gets the current LogSnag HTTP client
+     * @return the current LogSnag HTTP client
+     */
     public LogSnagHTTPClient getHttpClient() {
         return httpClient;
     }
+
+    /**
+     * Sets the current LogSnag HTTP client
+     * @param httpClient The HTTP client to use
+     */
     public void setHttpClient(LogSnagHTTPClient httpClient) {
         this.httpClient = httpClient;
     }

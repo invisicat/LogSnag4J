@@ -3,8 +3,6 @@ package cc.ricecx.logsnag4j.api;
 import cc.ricecx.logsnag4j.LogSnagRequest;
 import cc.ricecx.logsnag4j.http.LogSnagHTTPClient;
 
-import java.util.function.Consumer;
-
 /**
  * An interface representing a LogSnag client.
  * @author RiceCX

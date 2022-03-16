@@ -3,17 +3,12 @@ package cc.ricecx.logsnag4j.http;
 import cc.ricecx.logsnag4j.LogSnagClient;
 import cc.ricecx.logsnag4j.exceptions.LogSnagException;
 
-import java.net.Authenticator;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.function.Consumer;
 
 /**
  * An implementation of {@link LogSnagClient} that uses the Java 11 HTTP client.
@@ -53,6 +48,11 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
                 .build();
     }
 
+    /**
+     * Wraps the request in a {@link CompletableFuture} and executes the given {@link Runnable} on finish.
+     * @param req The request to execute.
+     * @param onFinish The {@link Runnable} to execute on finish.
+     */
     private void wrapRequest(HttpRequest req, @org.jetbrains.annotations.NotNull Runnable onFinish) {
         try {
             CompletableFuture<HttpResponse<String>> respFuture = httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());

@@ -98,6 +98,8 @@ public class LogSnagRequest implements JSONRequest {
      *     The project and channel values should be lowercased! Alphabet characters, digits, and dashes "-" are accepted.
      * </pre>
      * The API can be found <a href="https://docs.logsnag.com/">here</a>
+     *
+     * @param string The string to convert
      * @return The converted String
      */
     public String convertToSafe(String string) {
@@ -119,50 +121,98 @@ public class LogSnagRequest implements JSONRequest {
         return jsonObject.toString();
     }
 
+    /**
+     * Gets the event name that appears in LogSnag
+     * @return The event name
+     */
     public String getEvent() {
         return event;
     }
 
+    /**
+     * Sets the event name that appears in LogSnag
+     * @param event The event name that appears in LogSnag
+     */
     public void setEvent(String event) {
         this.event = event;
     }
 
+    /**
+     * Gets the channel to send the log to
+     * @return The channel name
+     */
     public String getChannel() {
         return channel;
     }
 
+    /**
+     * Sets the channel to send the log to
+     * @param channel The channel to send the log to
+     */
     public void setChannel(String channel) {
         this.channel = channel;
     }
 
+    /**
+     * Gets the description of the log
+     * @return The description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets the description of the log
+     * @param description The description of the log
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * If the log should push notifications
+     * @return If the log should push notifications
+     */
     public boolean isNotify() {
         return notify;
     }
 
+    /**
+     * Sets if the log should push notifications
+     * @param notify If the log should push notifications
+     */
     public void setNotify(boolean notify) {
         this.notify = notify;
     }
 
+    /**
+     * Gets the icon to use for the log
+     * @return The icon
+     */
     public String getIcon() {
         return icon;
     }
 
+    /**
+     * Sets the icon to use for the log
+     * @param icon The icon to use for the log
+     */
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
+    /**
+     * Gets the project to send the log to
+     * @return The project name
+     */
     public String getProject() {
         return project;
     }
 
+    /**
+     * Sets the project to send the log to
+     * @param project The project to send the log to
+     */
     public void setProject(String project) {
         this.project = project;
     }
