@@ -1,5 +1,6 @@
 package cc.ricecx.logsnag4j.api;
 
+import cc.ricecx.logsnag4j.Emoji;
 import cc.ricecx.logsnag4j.LogSnagRequest;
 import cc.ricecx.logsnag4j.http.LogSnagHTTPClient;
 
@@ -33,7 +34,7 @@ public interface LogSnag {
      * @param channel The channel name
      * @param description The description of the event
      */
-    default void log(String event, String channel, String description, String icon) {
+    default void log(String event, String channel, String description, Emoji icon) {
         log(new LogSnagRequest(event, channel, description, icon, getProject()));
     }
 
@@ -43,7 +44,7 @@ public interface LogSnag {
      * @param channel The channel name
      * @param description The description of the event
      */
-    default void log(String event, String channel, String description, boolean notify, String icon) {
+    default void log(String event, String channel, String description, boolean notify, Emoji icon) {
         log(new LogSnagRequest(event, channel, description, notify, icon, getProject()));
     }
 

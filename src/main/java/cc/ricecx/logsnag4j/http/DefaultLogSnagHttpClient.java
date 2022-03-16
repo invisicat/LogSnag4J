@@ -13,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * An implementation of {@link LogSnagClient} that uses the Java 11 HTTP client.
  * It is recommended to use this implementation as it is async.
+ *
  * @author RiceCX
  * @since 1.0
  */
@@ -30,7 +31,8 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
 
     @Override
     public void sendRequest(String data, String apiKey) {
-        wrapRequest(createRequest(data, apiKey), () -> {});
+        wrapRequest(createRequest(data, apiKey), () -> {
+        });
     }
 
     @Override
@@ -39,6 +41,7 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
     }
 
     private HttpRequest createRequest(String data, String apiKey) {
+        System.out.println(data);
         return HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(data))
                 .uri(URI.create(LogSnagClient.ENDPOINT))
@@ -50,18 +53,18 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
 
     /**
      * Wraps the request in a {@link CompletableFuture} and executes the given {@link Runnable} on finish.
-     * @param req The request to execute.
+     *
+     * @param req      The request to execute.
      * @param onFinish The {@link Runnable} to execute on finish.
      */
     private void wrapRequest(HttpRequest req, @org.jetbrains.annotations.NotNull Runnable onFinish) {
-        try {
-            CompletableFuture<HttpResponse<String>> respFuture = httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());
-            HttpResponse<String> resp = respFuture.join();
+        CompletableFuture<HttpResponse<String>> respFuture = httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> resp = respFuture.join();
 
-            onFinish.run();
-            if (resp.statusCode() != 200) throw new LogSnagException("Error sending request to LogSnag: " + resp);
-        } catch (LogSnagException e) {
-            e.printStackTrace();
+        onFinish.run();
+
+        if (resp.statusCode() != 200) {
+            throw new LogSnagException("Error sending request to LogSnag: " + resp.body());
         }
     }
 }

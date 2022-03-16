@@ -22,7 +22,7 @@ public class LogSnagRequest implements JSONRequest {
 
     private boolean notify;
 
-    private String icon;
+    private Emoji icon;
 
     private String project;
 
@@ -35,7 +35,7 @@ public class LogSnagRequest implements JSONRequest {
      * @param icon The icon to use for the log
      * @param project The project to send the log to
      */
-    public LogSnagRequest(@NotNull String event, @NotNull String channel, String description, boolean notify, String icon, String project) {
+    public LogSnagRequest(@NotNull String event, @NotNull String channel, String description, boolean notify, Emoji icon, String project) {
         Conditions.checkNotNullOrEmpty(event, "Event name cannot be null!");
         Conditions.checkNotNullOrEmpty(channel, "Channel name cannot be null!");
         this.event = convertToSafe(event);
@@ -54,7 +54,7 @@ public class LogSnagRequest implements JSONRequest {
      * @param project The project to send the log to
      */
     public LogSnagRequest(String event, String channel, String description, String project) {
-        this(event, channel, description, false, "🌐", project);
+        this(event, channel, description, false, Emoji.of("🌐"), project);
     }
 
     /**
@@ -65,7 +65,7 @@ public class LogSnagRequest implements JSONRequest {
      * @param icon The icon to use for the log
      * @param project The project to send the log to
      */
-    public LogSnagRequest(String event, String channel, String description, String icon, String project) {
+    public LogSnagRequest(String event, String channel, String description, Emoji icon, String project) {
         this(event, channel, description, false, icon, project);
     }
 
@@ -78,7 +78,7 @@ public class LogSnagRequest implements JSONRequest {
      * @param project The project to send the log to
      */
     public LogSnagRequest(String event, String channel, String description, boolean notify, String project) {
-        this(event, channel, description, true, "🌐", project);
+        this(event, channel, description, notify, Emoji.of("🌐"), project);
     }
 
     /**
@@ -115,7 +115,7 @@ public class LogSnagRequest implements JSONRequest {
         jsonObject.addProperty("channel", channel);
         jsonObject.addProperty("description", description);
         jsonObject.addProperty("notify", notify);
-        jsonObject.addProperty("icon", icon);
+        jsonObject.addProperty("icon", icon.getEmoji());
         jsonObject.addProperty("project", project);
 
         return jsonObject.toString();
@@ -189,7 +189,7 @@ public class LogSnagRequest implements JSONRequest {
      * Gets the icon to use for the log
      * @return The icon
      */
-    public String getIcon() {
+    public Emoji getIcon() {
         return icon;
     }
 
@@ -197,7 +197,7 @@ public class LogSnagRequest implements JSONRequest {
      * Sets the icon to use for the log
      * @param icon The icon to use for the log
      */
-    public void setIcon(String icon) {
+    public void setIcon(Emoji icon) {
         this.icon = icon;
     }
 

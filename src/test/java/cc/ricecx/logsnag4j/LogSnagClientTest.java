@@ -20,13 +20,13 @@ class LogSnagClientTest {
 
     @Test
     void log() {
-        assertDoesNotThrow(() -> client.log("money-received", "paypal", "$100 has been received!", "💵"));
-        assertDoesNotThrow(() -> client.log("money-sent", "paypal", "$15.39 has been withdrawn!", "💵"));
+        assertDoesNotThrow(() -> client.log("money-received", "paypal", "$100 has been received!", Emoji.of("💵")));
+        assertDoesNotThrow(() -> client.log("money-sent", "paypal", "$15.39 has been withdrawn!", Emoji.of("💵")));
     }
 
     @Test
     void logCallback() {
-        LogSnagRequest event = new LogSnagRequest("money-received", "paypal", "$100 has been received!", "💵");
+        LogSnagRequest event = new LogSnagRequest("money-received", "paypal", "$100 has been received!", Emoji.of("💵"), client.getProject());
 
         assertDoesNotThrow(() -> client.logCallback(event, () -> System.out.println("Logged!")));
 
