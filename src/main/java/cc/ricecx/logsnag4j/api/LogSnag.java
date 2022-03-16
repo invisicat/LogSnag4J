@@ -65,7 +65,7 @@ public interface LogSnag {
      * @param request The {@link LogSnagRequest} to send to LogSnag
      * @param consume The callback to call if the message was successfully sent
      */
-    void logCallback(LogSnagRequest request, Consumer<Void> consume);
+    void logCallback(LogSnagRequest request, Runnable consume);
 
     /**
      * Gets the current project name

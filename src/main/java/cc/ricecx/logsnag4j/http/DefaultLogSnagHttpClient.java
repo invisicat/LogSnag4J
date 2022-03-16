@@ -25,26 +25,22 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
 
     private final HttpClient httpClient;
 
-    private final ExecutorService executor = Executors.newCachedThreadPool();
-
     public DefaultLogSnagHttpClient() {
         this.httpClient = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(30))
                 .version(HttpClient.Version.HTTP_2)
-                .authenticator(Authenticator.getDefault())
                 .build();
     }
 
 
     @Override
     public void sendRequest(String data, String apiKey) {
-        executor.submit(() -> wrapRequest(createRequest(data, apiKey), (o) -> {
-        }));
+        wrapRequest(createRequest(data, apiKey), () -> {});
     }
 
     @Override
-    public void sendRequest(String data, String apiKey, Consumer<Void> onFinish) {
-        executor.submit(() -> wrapRequest(createRequest(data, apiKey), onFinish));
+    public void sendRequest(String data, String apiKey, Runnable onFinish) {
+        wrapRequest(createRequest(data, apiKey), onFinish);
     }
 
     private HttpRequest createRequest(String data, String apiKey) {
@@ -57,15 +53,14 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
                 .build();
     }
 
-    private void wrapRequest(HttpRequest req, @org.jetbrains.annotations.NotNull Consumer<Void> onFinish) {
-        CompletableFuture<HttpResponse<String>> respFuture = httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());
-
+    private void wrapRequest(HttpRequest req, @org.jetbrains.annotations.NotNull Runnable onFinish) {
         try {
-            HttpResponse<String> resp = respFuture.get();
+            CompletableFuture<HttpResponse<String>> respFuture = httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> resp = respFuture.join();
 
-            onFinish.accept(null);
+            onFinish.run();
             if (resp.statusCode() != 200) throw new LogSnagException("Error sending request to LogSnag: " + resp);
-        } catch (ExecutionException | InterruptedException | LogSnagException e) {
+        } catch (LogSnagException e) {
             e.printStackTrace();
         }
     }

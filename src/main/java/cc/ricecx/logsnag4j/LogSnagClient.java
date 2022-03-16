@@ -5,9 +5,6 @@ import cc.ricecx.logsnag4j.exceptions.LogSnagException;
 import cc.ricecx.logsnag4j.http.LogSnagHTTPClient;
 import cc.ricecx.logsnag4j.http.DefaultLogSnagHttpClient;
 
-import java.util.function.Consumer;
-
-
 public class LogSnagClient implements LogSnag {
 
     public static final String ENDPOINT =  "https://api.logsnag.com/v1/log";
@@ -37,7 +34,7 @@ public class LogSnagClient implements LogSnag {
     }
 
     @Override
-    public void logCallback(LogSnagRequest request, Consumer<Void> consume) {
+    public void logCallback(LogSnagRequest request, Runnable consume) {
         httpClient.sendRequest(request.serialize(), apiKey, consume);
     }
 

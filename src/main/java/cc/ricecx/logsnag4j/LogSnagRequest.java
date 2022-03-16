@@ -116,7 +116,7 @@ public class LogSnagRequest implements JSONRequest {
         jsonObject.addProperty("icon", icon);
         jsonObject.addProperty("project", project);
 
-        return jsonObject.getAsString();
+        return jsonObject.toString();
     }
 
     public String getEvent() {

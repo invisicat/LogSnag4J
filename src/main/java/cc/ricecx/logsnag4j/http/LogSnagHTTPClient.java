@@ -12,5 +12,5 @@ public interface LogSnagHTTPClient {
     void sendRequest(String data, String apiKey);
 
 
-    void sendRequest(String data, String apiKey, Consumer<Void> onFinish);
+    void sendRequest(String data, String apiKey, Runnable onFinish);
 }
