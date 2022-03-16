@@ -49,6 +49,31 @@ Minimum Java version: Java 11
 - [LogSnag4J Javadocs TBA]()
 
 
+## Usage
+You can define a `LogSnag4J` instance in your application by using the following code:
+```java
+public class Main {
+    
+    public void main(String[] args) {
+        LogSnag logSnagClient = new LogSnagClient("your-api-key", "default-project");
+        
+        // Simply log a message by parameters
+        logSnagClient.log("money-received", "paypal", "$100 has been received!", "💵");
+        
+        // Or you can log a message by using a LogSnagRequest object
+        LogSnagRequest logSnagRequest = new LogSnagRequest("money-received", "paypal", "$100 has been received!", "💵");
+        
+        // You can either log by using the `log` method or by using the `sendRequest` method
+        
+        logSnagClient.log(logSnagRequest);
+        // Or
+        logSnagRequest.sendRequest(logSnagClient);
+        
+    }
+}
+
+```
+
 ## License
 ```asciidoc
 MIT License
