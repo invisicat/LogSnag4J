@@ -9,6 +9,14 @@
     <name>${project.groupId}:${project.artifactId}</name>
     <version>1.0</version>
     <url>https://github.com/RiceCX/Logsnag4J</url>
+    <description>Get notifications and track your project events in Java.</description>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url></url>
+        </license>
+    </licenses>
 
     <contributors>
         <contributor>
@@ -33,6 +41,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
 
@@ -75,6 +84,7 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>
@@ -115,11 +125,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
 
