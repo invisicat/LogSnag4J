@@ -10,6 +10,16 @@
 </div>
 <hr />
 
+# Table of Contents
+- [Adding LogSnag4J to your project](#adding-logsnag4j-to-your-project)
+- [Requirements](#requirements)
+- [Documentation](#documentation)
+- [Usage](#usage)
+- [License](#license)
+- [Disclaimer](#disclaimer)
+
+<hr />
+
 ## Adding LogSnag4J to your project
 The FQCN of LogSnag4J is `cc.ricecx.logsnag4j`. To add LogSnag4J to your project,
 follow the instructions below for your specified build tool.
@@ -48,6 +58,31 @@ Minimum Java version: Java 11
 - [LogSnag Documentation](https://docs.logsnag.com)
 - [LogSnag4J Javadocs TBA]()
 
+
+## Usage
+You can define a `LogSnag4J` instance in your application by using the following code:
+```java
+public class Main {
+    
+    public void main(String[] args) {
+        LogSnag logSnagClient = new LogSnagClient("your-api-key", "default-project");
+        
+        // Simply log a message by parameters
+        logSnagClient.log("money-received", "paypal", "$100 has been received!", "💵");
+        
+        // Or you can log a message by using a LogSnagRequest object
+        LogSnagRequest logSnagRequest = new LogSnagRequest("money-received", "paypal", "$100 has been received!", "💵");
+        
+        // You can either log by using the `log` method or by using the `sendRequest` method
+        
+        logSnagClient.log(logSnagRequest);
+        // Or
+        logSnagRequest.sendRequest(logSnagClient);
+        
+    }
+}
+
+```
 
 ## License
 ```asciidoc
