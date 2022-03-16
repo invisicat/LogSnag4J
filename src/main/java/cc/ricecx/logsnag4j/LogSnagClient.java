@@ -7,6 +7,10 @@ import cc.ricecx.logsnag4j.http.DefaultLogSnagHttpClient;
 
 public class LogSnagClient implements LogSnag {
 
+    /**
+     * The LogSnag HTTP endpoint
+     * @since 1.0
+     */
     public static final String ENDPOINT =  "https://api.logsnag.com/v1/log";
 
 

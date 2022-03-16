@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A object that represents a standard logsnag request
+ * A object that represents a standard LogSnag request
  *
  * @author ricecx
  * @since 1.0
@@ -28,7 +28,7 @@ public class LogSnagRequest implements JSONRequest {
 
     /**
      * Creates a new LogSnag request
-     * @param event The event name that appears in logsnag
+     * @param event The event name that appears in LogSnag
      * @param channel The channel to send the log to
      * @param description A description of the log
      * @param notify Whether this log should push notifications
@@ -48,7 +48,7 @@ public class LogSnagRequest implements JSONRequest {
 
     /**
      * Creates a new LogSnag request
-     * @param event The event name that appears in logsnag
+     * @param event The event name that appears in LogSnag
      * @param channel The channel to send the log to
      * @param description A description of the log
      * @param project The project to send the log to
@@ -59,7 +59,7 @@ public class LogSnagRequest implements JSONRequest {
 
     /**
      * Whether this log should push notifications
-     * @param event The event name that appears in logsnag
+     * @param event The event name that appears in LogSnag
      * @param channel The channel to send the log to
      * @param description A description of the log
      * @param icon The icon to use for the log
@@ -71,7 +71,7 @@ public class LogSnagRequest implements JSONRequest {
 
     /**
      * Creates a new LogSnag request
-     * @param event The event name that appears in logsnag
+     * @param event The event name that appears in LogSnag
      * @param channel The channel to send the log to
      * @param description A description of the log
      * @param notify Whether this log should push notifications
@@ -82,17 +82,17 @@ public class LogSnagRequest implements JSONRequest {
     }
 
     /**
-     * Uses a logsnag request to send a log to logsnag. This is shorthand for
+     * Uses a LogSnag request to send a log to LogSnag. This is shorthand for
      * {@link LogSnag#log(cc.ricecx.logsnag4j.LogSnagRequest)}
-     * @param client The logsnag client to use
+     * @param client The LogSnag client to use
      */
     public void sendRequest(LogSnagClient client) {
         client.log(this);
     }
 
     /**
-     * This converts Logsnag strings into
-     * their corresponding varient. This is following
+     * This converts LogSnag strings into
+     * their corresponding variant. This is following
      * the Logsnag API standards as:
      * <pre>
      *     The project and channel values should be lowercased! Alphabet characters, digits, and dashes "-" are accepted.
