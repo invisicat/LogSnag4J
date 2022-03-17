@@ -7,7 +7,7 @@
     <groupId>cc.ricecx</groupId>
     <artifactId>logsnag4j</artifactId>
     <name>${project.groupId}:${project.artifactId}</name>
-    <version>1.0</version>
+    <version>1.1</version>
     <url>https://github.com/RiceCX/Logsnag4J</url>
     <description>Get notifications and track your project events in Java.</description>
 
