@@ -62,6 +62,11 @@ Minimum Java version: Java 11
 ## Usage
 You can define a `LogSnag4J` instance in your application by using the following code:
 ```java
+
+import cc.ricecx.logsnag4j.LogSnagClient;
+import cc.ricecx.logsnag4j.Emoji;
+import cc.ricecx.logsnag4j.LogSnagRequest;
+
 public class Main {
     
     public void main(String[] args) {
