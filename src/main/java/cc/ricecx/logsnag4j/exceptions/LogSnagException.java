@@ -16,6 +16,11 @@ public class LogSnagException extends RuntimeException {
         super("LogSnag Exception - " + message + "\n Data sent to LogSnag: " + (data == null ? "None" : data));
     }
 
+    /**
+     * This is thrown when an error occurs in the LogSnag4J library.
+     * @param message The message to be displayed.
+     * @param data The data to be sent to LogSnag.
+     */
     public LogSnagException(String message, HttpRequest data) {
         super("LogSnag Exception - " + message + "\n Data sent to LogSnag: " + (data == null ? "None" : data));
     }
