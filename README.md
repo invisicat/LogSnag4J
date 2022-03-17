@@ -31,7 +31,7 @@ To add LogSnag4J to your Maven project, use the following:
 <dependency>
     <groupId>cc.ricecx.logsnag4j</groupId>
     <artifactId>logsnag4j</artifactId>
-    <version>1.0.0</version>
+    <version>1.1</version>
 </dependency>
 ```
 
@@ -41,14 +41,14 @@ To add LogSnag4J to your Gradle project, use the following:
 > 
 ```groovy
 dependencies {
-    compile 'cc.ricecx.logsnag4j:logsnag4j:1.0.0'
+    compile 'cc.ricecx.logsnag4j:logsnag4j:1.1'
 }
 ```
 
 > Kotlin DSL
 ```kotlin
 
-implementation("cc.ricecx.logsnag4j:logsnag4j:1.0.0")
+implementation("cc.ricecx.logsnag4j:logsnag4j:1.1")
 ```
 
 ## Requirements
