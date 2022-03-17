@@ -68,10 +68,10 @@ public class Main {
         LogSnag logSnagClient = new LogSnagClient("your-api-key", "default-project");
         
         // Simply log a message by parameters
-        logSnagClient.log("money-received", "paypal", "$100 has been received!", "💵");
+        logSnagClient.log("money-received", "paypal", "$100 has been received!", Emoji.of("💵"));
         
         // Or you can log a message by using a LogSnagRequest object
-        LogSnagRequest logSnagRequest = new LogSnagRequest("money-received", "paypal", "$100 has been received!", "💵");
+        LogSnagRequest logSnagRequest = new LogSnagRequest("money-received", "paypal", "$100 has been received!", Emoji.of("💵"));
         
         // You can either log by using the `log` method or by using the `sendRequest` method
         
