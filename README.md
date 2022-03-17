@@ -23,7 +23,7 @@
 <hr />
 
 ## Adding LogSnag4J to your project
-The FQCN of LogSnag4J is `cc.ricecx.logsnag4j`. To add LogSnag4J to your project,
+The FQCN of LogSnag4J is `cc.ricecx.logsnag4j`. It is available on [Maven Central](https://search.maven.org/artifact/cc.ricecx/logsnag4j).To add LogSnag4J to your project,
 follow the instructions below for your specified build tool.
 
 To add LogSnag4J to your Maven project, use the following:
