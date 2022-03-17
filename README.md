@@ -5,10 +5,12 @@
 <p>Get notifications and track your project events in Java.</p>
 <a href="https://discord.gg/dY3pRxgWua"><img src="https://img.shields.io/discord/922560704454750245?color=%237289DA&label=Discord" alt="Discord"></a>
 <a href="https://docs.logsnag.com"><img src="https://img.shields.io/badge/Docs-LogSnag" alt="Documentation"></a>
+<a href="https://javadoc.io/doc/cc.ricecx/logsnag4j/latest/index.html"><img src="https://javadoc.io/badge2/cc.ricecx/logsnag4j/javadoc.svg" alt="javadocs"/></a>
 <br />
 <br />
 </div>
 <hr />
+
 
 # Table of Contents
 - [Adding LogSnag4J to your project](#adding-logsnag4j-to-your-project)
