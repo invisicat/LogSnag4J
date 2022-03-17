@@ -1,0 +1,27 @@
+name: Maven CI
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Maven Central Repo
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Deploy with Maven
+        run: mvn -B clean test
+        env:
+          TEST_LOGSNAG_API_KEY: ${{ secrets.TEST_LOGSNAG_API_KEY }}
