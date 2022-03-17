@@ -41,7 +41,6 @@ public class DefaultLogSnagHttpClient implements LogSnagHTTPClient {
     }
 
     private HttpRequest createRequest(String data, String apiKey) {
-        System.out.println(data);
         return HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(data))
                 .uri(URI.create(LogSnagClient.ENDPOINT))
